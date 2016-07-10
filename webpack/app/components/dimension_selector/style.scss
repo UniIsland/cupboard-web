@@ -1,0 +1,20 @@
+.dimensionTable {
+  thead {
+    font-family: monospace;
+    font-size: 12px;
+  }
+}
+
+.dropdown {
+  width: 400px;
+  font-family: monospace;
+
+  > div {
+    padding: 0;
+
+    > input {
+      padding-left: 10px;
+    }
+  }
+}
+

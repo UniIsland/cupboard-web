@@ -1,0 +1,42 @@
+@import '../../../globals';
+@import './config';
+
+.appbar {
+  z-index: $z-index-higher;
+  display: flex;
+  min-height: $appbar-height;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background: $color-primary-dark;
+  box-shadow: $appbar-shadow;
+}
+
+.namespaces {
+  flex-grow: 1;
+  > ul {
+    list-style: none;
+    > li {
+      display: inline-block;
+      > a {
+        @include typo-menu;
+        position: relative;
+        display: inline-block;
+        padding: 0 1.5 * $unit;
+        margin-right: $unit;
+        line-height: $appbar-height;
+        color: $color-primary-contrast;
+        &.active:after {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          display: block;
+          width: 100%;
+          height: .3 * $unit;
+          content: '';
+          background-color: $color-accent;
+        }
+      }
+    }
+  }
+}

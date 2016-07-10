@@ -1,0 +1,11 @@
+.layout {
+  position: absolute;
+  top: 64px;
+  bottom: 0;
+  height: inherit;
+
+  > .panel {
+    padding: 20px 20px 0 20px;
+    overflow-y: scroll;
+  }
+}

@@ -1,0 +1,28 @@
+.active {
+  background: #eeeeee;
+}
+
+.list {
+  position: absolute;
+  top: 48px;
+  bottom: 0;
+  overflow-y: scroll;
+}
+
+.listItem {
+  [data-react-toolbox="font-icon"] {
+    margin-right: 0!important;
+  }
+}
+
+.indentListItem {
+  > :first-child {
+    padding-left: 50px;
+  }
+}
+
+.indentListItemText {
+  [data-react-toolbox="list-item-text"] {
+    margin-left: 30px;
+  }
+}
