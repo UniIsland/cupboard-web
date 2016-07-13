@@ -37,7 +37,7 @@ class MetricList extends React.Component {
       return;
     } else {
       this.setState({expandedMetricRoot: null});
-      this.context.router.push(`${this.props.namespace}/${m.name}`);
+      this.context.router.push(`/${this.props.namespace}/${m.name}`);
     }
   }
 

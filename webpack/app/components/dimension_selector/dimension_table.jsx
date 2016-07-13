@@ -12,22 +12,34 @@ class DimensionTable extends React.Component {
   }
 
   getSelectedIndex() {
-    const selected = [];
+    this.selected = [];
     this.props.selected.forEach((d) => {
       const index = this.props.dimensions.findIndex((e) => e.key == d);
-      if (index >= 0) selected.push(index);
-    });
-    return selected;
+      if (index >= 0) this.selected.push(index);
+    }, this);
+    return this.selected;
   }
   onSelect(selected) {
+    console.log('onSelect', selected);
     const location = {
       pathname: this.context.route_location.pathname,
-      query: {}
+      query: {
+        dimensionGroup: this.props.dimensionGroup
+      }
     };
-    if (this.props.dimensionGroup)
-      location.query.dimensionGroup = this.props.dimensionGroup;
-    if (selected.length > 0)
-      location.query.dimensions = selected.map((i) => this.props.dimensions[i].key);
+    if (selected.length == 1) {
+      const i = this.selected.indexOf(selected[0]);
+      if (i < 0)
+        this.selected.push(selected[0]);
+      else
+        this.selected.splice(i, 1);
+    } else {
+      if (selected.length > 1 && selected.length == this.selected.length)
+        selected.pop();
+      this.selected = selected;
+    }
+    if (this.selected.length > 0)
+      location.query.dimensions = this.selected.map((i) => this.props.dimensions[i].key);
     this.context.router.push(location);
   }
   showLoading() {

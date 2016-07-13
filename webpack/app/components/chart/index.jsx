@@ -22,6 +22,8 @@ class Chart extends React.Component {
     return {
       name: data.dimension || this.context.route_params.metric,
       type: 'line',
+      connectNulls: false,
+      showSymbol: false,
       data: data.data.map((d) => ({
         name: d.date,
         value: [d.date, d.value]
@@ -43,7 +45,7 @@ class Chart extends React.Component {
           opacity: 0.5
         }
       };
-      mainSeries.showSymbol = false;
+      mainSeries.silent = false;
       seriesData.push(mainSeries);
       this.currentDimensions.forEach((d) => {
         seriesData.push(this.dataToSeries(this.seriesData[d]));
@@ -53,6 +55,14 @@ class Chart extends React.Component {
       title: { text: this.context.route_params.metric },
       xAxis: { type: 'time', splitLine: { show: false }, splitNumber: 10 },
       yAxis: { type: 'value' },
+      dataZoom: [{
+        yAxisIndex: 0,
+        type: 'slider',
+        showDataShadow: false,
+        showDetail: false,
+        filterMode: 'empty',
+        right: 50
+      }],
       series: seriesData,
       tooltip: { trigger: 'axis' }
     };

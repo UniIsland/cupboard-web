@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CompressionPlugin = require("compression-webpack-plugin");
 
 const devServerPort = 3808;
 
@@ -25,7 +26,7 @@ const config = {
     alias: {
       _config: path.join(__dirname, 'config', process.env.NODE_ENV || 'development')
     },
-    extensions: ["", ".js", ".jsx", ".scss"],
+    extensions: ["", ".js", ".jsx", ".scss", ".md"],
     root: path.join(__dirname, 'webpack')
   },
 
@@ -39,6 +40,9 @@ const config = {
       }, {
         test: /\.(scss|css)$/,
         loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?sourceMap')
+      }, {
+        test: /\.md$/,
+        loader: 'html!markdown'
       }
     ]
   },
@@ -63,26 +67,28 @@ const config = {
       template: './webpack/index.html'
     })
   ],
-
-  watchOptions: {
-    poll: 3000,
-    aggregateTimeout: 3000
-  }
 };
 
 if (production) {
   config.bail = true;
   config.plugins.push(
+    new webpack.DefinePlugin({
+      'process.env': { NODE_ENV: JSON.stringify('production') }
+    }),
     new webpack.NoErrorsPlugin(),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compressor: { warnings: false },
       sourceMap: false
     }),
-    new webpack.DefinePlugin({
-      'process.env': { NODE_ENV: JSON.stringify('production') }
-    }),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin()
+    new CompressionPlugin({
+      asset: "[path].gz[query]",
+      algorithm: "gzip",
+      test: /\.js$|\.css$/,
+      threshold: 10240,
+      minRatio: 0.8
+    })
   );
 } else {
   config.devServer = {
@@ -91,6 +97,11 @@ if (production) {
     port: devServerPort
   };
   config.devtool = 'cheap-module-eval-source-map';
+  config.historyApiFallback = true;
+  config.watchOptions = {
+    poll: 3000,
+    aggregateTimeout: 3000
+  };
 }
 
 module.exports = config;
