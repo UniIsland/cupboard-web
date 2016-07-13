@@ -17,11 +17,14 @@ const config = {
 
   output: {
     path: path.join(__dirname, 'build'),
-    publicPath: '/assets/',
+    publicPath: '/',
     filename: production ? 'assets/[name]-[chunkhash].js' : '[name].js'
   },
 
   resolve: {
+    alias: {
+      _config: path.join(__dirname, 'config', process.env.NODE_ENV || 'development')
+    },
     extensions: ["", ".js", ".jsx", ".scss"],
     root: path.join(__dirname, 'webpack')
   },
@@ -87,7 +90,6 @@ if (production) {
     host: '0.0.0.0',
     port: devServerPort
   };
-  config.output.publicPath = '/';
   config.devtool = 'cheap-module-eval-source-map';
 }
 

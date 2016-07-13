@@ -3,6 +3,8 @@ import $ from 'jquery';
 
 import Echart from '../echart';
 
+import _config from '_config';
+
 function _arraysEqual(a1, a2) {
   return (a1.length == a2.length) && a1.every((e, i) => e === a2[i]);
 }
@@ -70,7 +72,7 @@ class Chart extends React.Component {
   loadDimensonSeries() {
     this.currentDimensions = this.props.dimensions;
     this.ajax = $.ajax({
-      url: '//cupboard.net:3000/data/daily.json',
+      url: `//${_config.API_HOST}/data/daily.json`,
       data: {
         namespace: this.context.route_params.namespace,
         metric: this.context.route_params.metric,
@@ -90,7 +92,7 @@ class Chart extends React.Component {
     this.refs.chart.showLoading();
     this.seriesData = {};
     this.ajax = $.ajax({
-      url: '//cupboard.net:3000/data/daily.json',
+      url: `//${_config.API_HOST}/data/daily.json`,
       data: {
         namespace: this.context.route_params.namespace,
         metric: this.context.route_params.metric

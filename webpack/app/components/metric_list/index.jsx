@@ -3,6 +3,8 @@ import { FontIcon, List, ListItem } from 'react-toolbox';
 import classnames from 'classnames';
 import $ from 'jquery';
 
+import _config from '_config';
+
 import style from './style';
 
 class MetricList extends React.Component {
@@ -17,7 +19,10 @@ class MetricList extends React.Component {
   loadMetrics() {
     if (this.state.metrics.length > 0) return;
     this.ajax = $.ajax({
-      url: `//cupboard.net:3000/metrics.json?namespace=${this.props.namespace}`,
+      url: `//${_config.API_HOST}/metrics.json`,
+      data: {
+        namespace: this.props.namespace
+      },
       success: (data) => {
         this.metricsByName = {};
         data.forEach((m) => this.metricsByName[m.name] = m);

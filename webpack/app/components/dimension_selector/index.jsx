@@ -4,6 +4,8 @@ import $ from 'jquery';
 import DimensionDropdown from './dimension_dropdown.jsx';
 import DimensionTable from './dimension_table.jsx';
 
+import _config from '_config';
+
 class DimensionSelector extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +19,7 @@ class DimensionSelector extends React.Component {
     this.currentDimensionGroup = this.props.dimensionGroup;
     this.refs.table.showLoading();
     this.ajax = $.ajax({
-      url: '//cupboard.net:3000/data/dimensions.json',
+      url: `//${_config.API_HOST}/data/dimensions.json`,
       data: {
         namespace: this.context.route_params.namespace,
         metric: this.props.metric,

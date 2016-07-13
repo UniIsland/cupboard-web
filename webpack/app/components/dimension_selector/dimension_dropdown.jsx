@@ -2,6 +2,8 @@ import React from 'react';
 import { Dropdown } from 'react-toolbox';
 import $ from 'jquery';
 
+import _config from '_config';
+
 import style from './style';
 
 class DimensionDropdown extends React.Component {
@@ -44,7 +46,7 @@ class DimensionDropdown extends React.Component {
     if (this.currentMetric == this.props.metric) return;
     this.currentMetric = this.props.metric;
     this.ajax = $.ajax({
-      url: '//cupboard.net:3000/data/dimension_groups.json',
+      url: `//${_config.API_HOST}/data/dimension_groups.json`,
       data: {
         namespace: this.context.route_params.namespace,
         metric: this.props.metric

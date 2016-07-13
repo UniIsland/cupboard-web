@@ -1,7 +1,9 @@
 import React from 'react';
 import $ from 'jquery';
 
-import AppBar from './components/appbar'
+import AppBar from './components/appbar';
+
+import _config from '_config';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,7 +21,7 @@ class App extends React.Component {
 
   loadNamespaces() {
     this.ajax = $.ajax({
-      url: '//cupboard.net:3000/namespaces.json',
+      url: `//${_config.API_HOST}/namespaces.json`,
       success: (data) => {
         this.setState({namespaces: data});
       }
