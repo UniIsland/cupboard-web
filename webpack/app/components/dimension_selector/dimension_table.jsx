@@ -1,4 +1,3 @@
-import React from 'react';
 import { ProgressBar, Table } from 'react-toolbox';
 
 import style from './style';

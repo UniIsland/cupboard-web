@@ -1,5 +1,3 @@
-import React from 'react';
-
 class EmptyView extends React.Component {
   render() {
     return (

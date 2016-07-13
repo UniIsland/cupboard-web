@@ -1,7 +1,5 @@
-import React from 'react';
 import { FontIcon, List, ListItem } from 'react-toolbox';
 import classnames from 'classnames';
-import $ from 'jquery';
 
 import _config from '_config';
 

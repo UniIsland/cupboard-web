@@ -1,6 +1,4 @@
-import React from 'react';
 import { Dropdown } from 'react-toolbox';
-import $ from 'jquery';
 
 import _config from '_config';
 

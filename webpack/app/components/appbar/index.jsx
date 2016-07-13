@@ -1,4 +1,3 @@
-import React from 'react';
 import { AppBar } from 'react-toolbox';
 
 import Namespaces from './namespaces.jsx';

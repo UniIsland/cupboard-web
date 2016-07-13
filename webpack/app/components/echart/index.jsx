@@ -2,7 +2,6 @@
 //   https://github.com/luqin/react-echarts/blob/master/src/ECharts.js
 //   https://github.com/zillding/react-echarts-component/blob/master/src/index.js
 
-import React from 'react';
 import Echarts from 'echarts';
 
 class Echart extends React.Component {

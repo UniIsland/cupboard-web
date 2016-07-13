@@ -1,4 +1,3 @@
-import React from 'react';
 import { Layout, NavDrawer, ListSubHeader, Panel, Sidebar } from 'react-toolbox';
 
 import MetricList from '../metric_list';

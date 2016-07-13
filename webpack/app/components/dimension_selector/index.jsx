@@ -1,6 +1,3 @@
-import React from 'react';
-import $ from 'jquery';
-
 import DimensionDropdown from './dimension_dropdown.jsx';
 import DimensionTable from './dimension_table.jsx';
 

@@ -1,6 +1,3 @@
-import React from 'react';
-import $ from 'jquery';
-
 import Echart from '../echart';
 
 import _config from '_config';

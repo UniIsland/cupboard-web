@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Chart from '../chart';
 import DimensionSelector from '../dimension_selector';
 

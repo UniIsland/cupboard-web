@@ -51,10 +51,10 @@ const config = {
   },
 
   plugins: [
-    // new webpack.ProvidePlugin({
-    //   $: "jquery",
-    //   React: 'react'
-    // }),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      React: 'react'
+    }),
 
     new ExtractTextPlugin(production ? "assets/[name]-[chunkhash].css": '[name].css'),
 

@@ -1,6 +1,3 @@
-import React from 'react';
-import $ from 'jquery';
-
 import AppBar from './components/appbar';
 
 import _config from '_config';
