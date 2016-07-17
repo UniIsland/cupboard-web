@@ -94,7 +94,8 @@ if (production) {
   config.devServer = {
     headers: { 'Access-Control-Allow-Origin': '*' },
     host: '0.0.0.0',
-    port: devServerPort
+    port: devServerPort,
+    historyApiFallback: true
   };
   config.devtool = 'cheap-module-eval-source-map';
   config.historyApiFallback = true;

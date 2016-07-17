@@ -33,7 +33,7 @@ class Echart extends React.Component {
   }
   render() {
     return (
-      <div ref="echart" style={{height: '300px'}}></div>
+      <div ref="echart" style={{height: '400px'}}></div>
     );
   }
 }

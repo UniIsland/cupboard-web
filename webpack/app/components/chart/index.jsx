@@ -53,6 +53,10 @@ class Chart extends React.Component {
     }
     return {
       title: { text: this.context.route_params.metric },
+      grid: {
+        right: 50,
+        bottom: 80
+      },
       xAxis: { type: 'time', splitLine: { show: false }, splitNumber: 10 },
       yAxis: { type: 'value' },
       dataZoom: [{
@@ -61,10 +65,26 @@ class Chart extends React.Component {
         showDataShadow: false,
         showDetail: false,
         filterMode: 'empty',
-        right: 50
+        // right: 50
+      },{
+        xAxisIndex: 0,
+        type: 'slider',
+        // bottom: -10
       }],
       series: seriesData,
-      tooltip: { trigger: 'axis' }
+      // legend: { data: this.currentDimensions },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          animation: false
+        }
+      },
+      toolbox: {
+        feature: {
+          dataView: { readOnly: true },
+          saveAsImage: {}
+        }
+      }
     };
   }
   loadData() {
